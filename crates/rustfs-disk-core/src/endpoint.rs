@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use crate::{DiskError as Error, Result};
 use path_absolutize::Absolutize;
-use rustfs_disk_core::{DiskError as Error, Result};
 use rustfs_utils::{is_local_host, is_socket_addr};
 use std::{fmt::Display, path::Path};
 use tracing::debug;

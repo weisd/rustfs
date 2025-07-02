@@ -14,12 +14,11 @@
 
 //! Local disk implementation
 
-use crate::format::FormatV3;
 use async_trait::async_trait;
 use bytes::Bytes;
 use rustfs_disk_core::{
     CheckPartsResp, DeleteOptions, DiskError, DiskInfo, DiskInfoOptions, DiskLocation, Endpoint, FileInfo, FileInfoVersions,
-    FileReader, FileWriter, ReadMultipleReq, ReadMultipleResp, ReadOptions, RenameDataResp, Result, UpdateMetadataOpts,
+    FileReader, FileWriter, FormatV3, ReadMultipleReq, ReadMultipleResp, ReadOptions, RenameDataResp, Result, UpdateMetadataOpts,
     VolumeInfo, WalkDirOptions, constants::*, traits::DiskAPI,
 };
 use std::path::PathBuf;

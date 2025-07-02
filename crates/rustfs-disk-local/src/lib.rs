@@ -17,18 +17,14 @@
 //! This crate provides the local disk implementation for RustFS.
 //! It implements the DiskAPI trait for local file system operations.
 
-pub mod endpoint;
-pub mod error_conv;
-pub mod format;
 pub mod fs;
 pub mod local;
 pub mod os;
 
 // Re-export commonly used items
-pub use endpoint::*;
 pub use local::LocalDisk;
 
 /// Create a new local disk instance
 pub async fn new_local_disk(ep: &rustfs_disk_core::Endpoint, cleanup: bool) -> rustfs_disk_core::Result<LocalDisk> {
     LocalDisk::new(ep, cleanup).await
-} 
+}

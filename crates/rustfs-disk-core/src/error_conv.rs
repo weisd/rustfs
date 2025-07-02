@@ -14,7 +14,7 @@
 
 //! Error conversion utilities for local disk operations
 
-use rustfs_disk_core::DiskError;
+use crate::DiskError;
 use std::io;
 
 /// Convert IO error to appropriate disk error

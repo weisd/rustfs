@@ -17,7 +17,6 @@
 use serde::{Deserialize, Serialize};
 use time::OffsetDateTime;
 use tokio::io::{AsyncRead, AsyncWrite};
-use url::Url;
 use uuid::Uuid;
 
 /// Type aliases for file operations
@@ -35,27 +34,6 @@ pub struct DiskLocation {
 impl DiskLocation {
     pub fn valid(&self) -> bool {
         self.pool_idx.is_some() && self.set_idx.is_some() && self.disk_idx.is_some()
-    }
-}
-
-/// Endpoint represents a network or file path endpoint
-#[derive(Debug, PartialEq, Eq, Clone, Hash)]
-pub struct Endpoint {
-    pub url: Url,
-    pub is_local: bool,
-    pub pool_idx: i32,
-    pub set_idx: i32,
-    pub disk_idx: i32,
-}
-
-impl Endpoint {
-    /// Get the file path for local endpoints
-    pub fn get_file_path(&self) -> String {
-        if self.url.scheme() == "file" {
-            self.url.path().to_string()
-        } else {
-            String::new()
-        }
     }
 }
 

@@ -18,12 +18,18 @@
 //! It defines the fundamental interfaces that different disk implementations must follow.
 
 pub mod constants;
+pub mod endpoint;
 pub mod error;
+pub mod error_conv;
+pub mod format;
 pub mod traits;
 pub mod types;
 
 // Re-export commonly used items
 pub use constants::*;
+pub use endpoint::*;
 pub use error::*;
+pub use error_conv::*;
+pub use format::*;
 pub use traits::*;
 pub use types::*;

@@ -26,19 +26,10 @@ workspace = true
 [dependencies]
 rustfs-disk-core.workspace = true
 rustfs-filemeta.workspace = true
-rustfs-utils = { workspace = true, features = ["full"] }
 async-trait.workspace = true
 bytes.workspace = true
-serde = { workspace = true, features = ["derive"] }
-serde_json.workspace = true
-thiserror.workspace = true
-time.workspace = true
 tokio = { workspace = true, features = ["fs", "io-util", "sync"] }
-tracing.workspace = true
-url.workspace = true
 uuid = { workspace = true, features = ["v4", "serde"] }
-path-absolutize.workspace = true
-once_cell.workspace = true
 
 [target.'cfg(not(windows))'.dependencies]
 nix.workspace = true 

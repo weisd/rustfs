@@ -26,7 +26,10 @@ workspace = true
 [dependencies]
 async-trait.workspace = true
 bytes.workspace = true
+path-absolutize.workspace = true
+rustfs-utils = { workspace = true, features = ["full"] }
 serde = { workspace = true, features = ["derive"] }
+serde_json.workspace = true
 thiserror.workspace = true
 time.workspace = true
 tokio = { workspace = true, features = ["io-util", "sync"] }

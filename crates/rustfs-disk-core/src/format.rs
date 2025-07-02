@@ -14,7 +14,7 @@
 
 //! Format definitions for local disk storage
 
-use rustfs_disk_core::{DiskError, Result};
+use crate::{DiskError, Result};
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
@@ -118,7 +118,7 @@ pub struct FormatV3 {
     // /// DiskInfo is an extended type which returns current
     // /// disk usage per path.
     #[serde(skip)]
-    pub disk_info: Option<rustfs_disk_core::DiskInfo>,
+    pub disk_info: Option<crate::DiskInfo>,
 }
 
 impl TryFrom<&[u8]> for FormatV3 {
