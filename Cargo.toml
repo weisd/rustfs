@@ -18,6 +18,8 @@ members = [
     "cli/rustfs-gui", # Graphical user interface client
     "common/common", # Shared utilities and data structures
     "crates/filemeta", # File metadata management
+    "crates/rustfs-disk-core", # Core disk abstractions and traits
+    "crates/rustfs-disk-local", # Local disk implementation
     "common/lock", # Distributed locking implementation
     "common/protos", # Protocol buffer definitions
     "common/workers", # Worker thread pools and task scheduling
@@ -72,6 +74,8 @@ rustfs-notify = { path = "crates/notify", version = "0.0.1" }
 rustfs-utils = { path = "crates/utils", version = "0.0.1" }
 rustfs-rio = { path = "crates/rio", version = "0.0.1" }
 rustfs-filemeta = { path = "crates/filemeta", version = "0.0.1" }
+rustfs-disk-core = { path = "crates/rustfs-disk-core", version = "0.0.1" }
+rustfs-disk-local = { path = "crates/rustfs-disk-local", version = "0.0.1" }
 rustfs-signer = { path = "crates/signer", version = "0.0.1" }
 workers = { path = "./common/workers", version = "0.0.1" }
 aes-gcm = { version = "0.10.3", features = ["std"] }

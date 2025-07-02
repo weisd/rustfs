@@ -8270,6 +8270,43 @@ dependencies = [
 ]
 
 [[package]]
+name = "rustfs-disk-core"
+version = "0.0.1"
+dependencies = [
+ "async-trait",
+ "bytes",
+ "serde",
+ "thiserror 2.0.12",
+ "time",
+ "tokio",
+ "tracing",
+ "url",
+ "uuid",
+]
+
+[[package]]
+name = "rustfs-disk-local"
+version = "0.0.1"
+dependencies = [
+ "async-trait",
+ "bytes",
+ "nix 0.30.1",
+ "once_cell",
+ "path-absolutize",
+ "rustfs-disk-core",
+ "rustfs-filemeta",
+ "rustfs-utils",
+ "serde",
+ "serde_json",
+ "thiserror 2.0.12",
+ "time",
+ "tokio",
+ "tracing",
+ "url",
+ "uuid",
+]
+
+[[package]]
 name = "rustfs-filemeta"
 version = "0.0.1"
 dependencies = [
