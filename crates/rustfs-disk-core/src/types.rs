@@ -174,7 +174,7 @@ impl FileInfoVersions {
     pub fn find_version_index(&self, v: &str) -> Option<usize> {
         self.versions
             .iter()
-            .position(|fi| fi.version_id.as_ref().map_or(false, |vid| vid == v))
+            .position(|fi| fi.version_id.as_ref().is_some_and(|vid| vid == v))
     }
 }
 

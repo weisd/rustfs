@@ -137,6 +137,9 @@ pub enum DiskError {
     #[error("erasure read quorum")]
     ErasureReadQuorum,
 
+    #[error("not implemented: {operation}")]
+    NotImplemented { operation: String },
+
     #[error("io error: {0}")]
     Io(#[from] io::Error),
 
@@ -148,6 +151,13 @@ impl DiskError {
     /// Create a custom error with the given message
     pub fn custom(message: impl Into<String>) -> Self {
         DiskError::Custom { message: message.into() }
+    }
+
+    /// Create a not implemented error for the given operation
+    pub fn not_implemented(operation: impl Into<String>) -> Self {
+        DiskError::NotImplemented {
+            operation: operation.into(),
+        }
     }
 
     /// Create error from any compatible error type
@@ -224,6 +234,9 @@ impl Clone for DiskError {
             DiskError::MethodNotAllowed => DiskError::MethodNotAllowed,
             DiskError::ErasureWriteQuorum => DiskError::ErasureWriteQuorum,
             DiskError::ErasureReadQuorum => DiskError::ErasureReadQuorum,
+            DiskError::NotImplemented { operation } => DiskError::NotImplemented {
+                operation: operation.clone(),
+            },
             DiskError::Io(e) => DiskError::Io(io::Error::new(e.kind(), e.to_string())),
             DiskError::Custom { message } => DiskError::Custom {
                 message: message.clone(),
