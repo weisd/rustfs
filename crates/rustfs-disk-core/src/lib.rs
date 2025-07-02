@@ -24,12 +24,14 @@ pub mod error_conv;
 pub mod format;
 pub mod traits;
 pub mod types;
+pub mod unified;
 
 // Re-export commonly used items
 pub use constants::*;
-pub use endpoint::*;
-pub use error::*;
+pub use endpoint::Endpoint;
+pub use error::{DiskError, Result};
 pub use error_conv::*;
 pub use format::*;
-pub use traits::*;
+pub use traits::DiskAPI;
 pub use types::*;
+pub use unified::*;

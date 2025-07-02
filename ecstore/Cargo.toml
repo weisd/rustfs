@@ -93,6 +93,9 @@ rustfs-utils = { workspace = true, features = ["full"] }
 rustfs-rio.workspace = true
 rustfs-signer.workspace = true
 futures-util.workspace = true
+rustfs-disk-core = { workspace = true }
+rustfs-disk-local = { workspace = true }
+rustfs-disk-remote = { workspace = true }
 
 [target.'cfg(not(windows))'.dependencies]
 nix = { workspace = true }
