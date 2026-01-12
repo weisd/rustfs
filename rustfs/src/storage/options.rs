@@ -672,6 +672,39 @@ mod tests {
     }
 
     #[tokio::test]
+    async fn test_del_opts_with_delete_prefix() {
+        let mut headers = create_test_headers();
+        let metadata = create_test_metadata();
+
+        // Test without RUSTFS_FORCE_DELETE header - should default to false
+        let result = del_opts("test-bucket", "test-object", None, &headers, metadata.clone()).await;
+        assert!(result.is_ok());
+        let opts = result.unwrap();
+        assert_eq!(opts.delete_prefix, false);
+
+        // Test with RUSTFS_FORCE_DELETE header set to "true"
+        headers.insert(RUSTFS_FORCE_DELETE, HeaderValue::from_static("true"));
+        let result = del_opts("test-bucket", "test-object", None, &headers, metadata.clone()).await;
+        assert!(result.is_ok());
+        let opts = result.unwrap();
+        assert_eq!(opts.delete_prefix, true);
+
+        // Test with RUSTFS_FORCE_DELETE header set to "false"
+        headers.insert(RUSTFS_FORCE_DELETE, HeaderValue::from_static("false"));
+        let result = del_opts("test-bucket", "test-object", None, &headers, metadata.clone()).await;
+        assert!(result.is_ok());
+        let opts = result.unwrap();
+        assert_eq!(opts.delete_prefix, false);
+
+        // Test with RUSTFS_FORCE_DELETE header set to other value
+        headers.insert(RUSTFS_FORCE_DELETE, HeaderValue::from_static("maybe"));
+        let result = del_opts("test-bucket", "test-object", None, &headers, metadata).await;
+        assert!(result.is_ok());
+        let opts = result.unwrap();
+        assert_eq!(opts.delete_prefix, false);
+    }
+
+    #[tokio::test]
     async fn test_get_opts_basic() {
         let headers = create_test_headers();
 
